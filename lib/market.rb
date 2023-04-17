@@ -16,4 +16,15 @@ class Market
       vendor.name
     end
   end
+
+  def vendors_that_sell(item)
+    vendors_that_sell_items = []
+    @vendors.each do |vendor|
+      # refactor this to a map later?
+      if vendor.check_stock(item) >= 1
+        vendors_that_sell_items << vendor
+      end
+    end
+    vendors_that_sell_items
+  end
 end
