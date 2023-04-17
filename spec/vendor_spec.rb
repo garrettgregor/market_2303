@@ -67,6 +67,4 @@ RSpec.describe Vendor do
       expect(vendor.check_stock(item2)).to eq(12)
     end
   end
-
-  
 end
