@@ -8,14 +8,26 @@ class Vendor
   end
 
   def check_stock(item)
-    if !@inventory.has_key?(item.name)
+    if @inventory == {}
       0
     else
-      @inventory[item.name]
+      @inventory.each do |item, stock|
+        if item == item
+          @inventory.each do |item, stock|
+            if stock >= 1
+              return stock
+            end
+          end
+        end
+      end
     end
   end
 
   def stock(item, item_inventory)
-    @inventory[item.name] += item_inventory
+    @inventory[item] += item_inventory
+  end
+
+  def potential_revenue
+    # require 'pry'; binding.pry
   end
 end

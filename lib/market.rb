@@ -27,4 +27,8 @@ class Market
     end
     vendors_that_sell_items
   end
+
+  def potential_revenue
+    
+  end
 end
