@@ -48,7 +48,7 @@ RSpec.describe Vendor do
       vendor.stock(item1, 30)
       
       expected = {
-        "Peach" => 30
+        item1 => 30
       }
       
       expect(vendor.inventory).to eq(expected)
@@ -68,7 +68,7 @@ RSpec.describe Vendor do
       expect(vendor.check_stock(item1)).to eq(55)
       
       expected1 = {
-        "Peach" => 55
+        item1 => 55
       }
       
       expect(vendor.inventory).to eq(expected1)
@@ -76,8 +76,8 @@ RSpec.describe Vendor do
       vendor.stock(item2, 12)
       
       expected2 = {
-        "Peach"   => 55,
-        "Tomato"  => 12
+        item1 => 55,
+        item2 => 12
       }
       
       expect(vendor.inventory).to eq(expected2)
@@ -93,7 +93,7 @@ RSpec.describe Vendor do
       vendor.stock(item1, 30)
       
       expected = {
-        "Peach" => 30
+        item1 => 30
       }
       
       expect(vendor.inventory).to eq(expected)
@@ -113,7 +113,7 @@ RSpec.describe Vendor do
       expect(vendor.check_stock(item1)).to eq(55)
       
       expected1 = {
-        "Peach" => 55
+        item1 => 55
       }
       
       expect(vendor.inventory).to eq(expected1)
@@ -121,8 +121,8 @@ RSpec.describe Vendor do
       vendor.stock(item2, 12)
       
       expected2 = {
-        "Peach"   => 55,
-        "Tomato"  => 12
+        item1 => 55,
+        item2 => 12
       }
       
       expect(vendor.inventory).to eq(expected2)

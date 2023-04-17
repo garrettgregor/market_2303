@@ -8,18 +8,10 @@ class Vendor
   end
 
   def check_stock(item)
-    if @inventory == {}
+    if !@inventory.include?(item)
       0
-    else
-      @inventory.each do |item, stock|
-        if item == item
-          @inventory.each do |item, stock|
-            if stock >= 1
-              return stock
-            end
-          end
-        end
-      end
+    elsif @inventory.include?(item)
+      @inventory[item]
     end
   end
 
@@ -28,6 +20,11 @@ class Vendor
   end
 
   def potential_revenue
-    # require 'pry'; binding.pry
+    sum = 0
+    @inventory.each do |item, quantity|
+      return_value = (item.price * quantity)
+      sum += return_value
+    end
+    sum
   end
 end
