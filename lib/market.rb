@@ -37,4 +37,14 @@ class Market
     end
     sorted_item_list.sort.uniq
   end
+
+  def total_inventory
+    total_inventory = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, stock|
+        total_inventory[item.name] += stock
+      end
+    end
+    total_inventory
+  end
 end
