@@ -27,4 +27,14 @@ class Market
     end
     vendors_that_sell_items
   end
+
+  def sorted_item_list
+    sorted_item_list = []
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, stock|
+        sorted_item_list << item.name
+      end
+    end
+    sorted_item_list.sort.uniq
+  end
 end
