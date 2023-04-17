@@ -23,34 +23,48 @@ RSpec.describe Vendor do
   describe "stock" do
     it "add stock of item to inventory" do
       vendor = Vendor.new("Rocky Mountain Fresh")
-      #=> #<Vendor:0x00007f85683152f0...>
       item1 = Item.new({name: 'Peach', price: "$0.75"})
-      #=> #<Item:0x007f9c56740d48...>
       item2 = Item.new({name: 'Tomato', price: '$0.50'})
-      #=> #<Item:0x007f9c565c0ce8...>
+      
       expect(vendor.check_stock(item1)).to eq(0)
-
+      
       vendor.stock(item1, 30)
-
+      
       expected = {
         "Peach" => 30
       }
       
       expect(vendor.inventory).to eq(expected)
-      # #=> {#<Item:0x007f9c56740d48...> => 30}
+      expect(vendor.check_stock(item1)).to eq(30)
+    end
+    
+    it "add stock of item to inventory" do
+      vendor = Vendor.new("Rocky Mountain Fresh")
+      item1 = Item.new({name: 'Peach', price: "$0.75"})
+      item2 = Item.new({name: 'Tomato', price: '$0.50'})
+      
+      expect(vendor.check_stock(item1)).to eq(0)
 
-      # vendor.check_stock(item1)
-      # #=> 30
-
-      # vendor.stock(item1, 25)
-
-      # vendor.check_stock(item1)
-      # #=> 55
-
-      # vendor.stock(item2, 12)
-
-      # vendor.inventory
-      # #=> {#<Item:0x007f9c56740d48...> => 55, #<Item:0x007f9c565c0ce8...> => 12}
+      vendor.stock(item1, 30)
+      vendor.stock(item1, 25)
+      
+      expect(vendor.check_stock(item1)).to eq(55)
+      
+      expected1 = {
+        "Peach" => 55
+      }
+      
+      expect(vendor.inventory).to eq(expected1)
+      
+      vendor.stock(item2, 12)
+      
+      expected2 = {
+        "Peach"   => 55,
+        "Tomato"  => 12
+      }
+      
+      expect(vendor.inventory).to eq(expected2)
+      expect(vendor.check_stock(item2)).to eq(12)
     end
   end
 

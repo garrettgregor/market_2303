@@ -10,6 +10,8 @@ class Vendor
   def check_stock(item)
     if !@inventory.has_key?(item.name)
       0
+    else
+      @inventory[item.name]
     end
   end
 
