@@ -42,7 +42,10 @@ class Market
     total_inventory = Hash.new(0)
     @vendors.each do |vendor|
       vendor.inventory.each do |item, stock|
-        total_inventory[item.name] += stock
+        total_inventory[item] = {
+          :quantity => stock,
+          :vendors  => vendors_that_sell(item)
+        }
       end
     end
     total_inventory
