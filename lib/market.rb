@@ -65,4 +65,27 @@ class Market
     overstocked_items
   end
 
+  def sell(item, amount)
+    if !vendors_that_sell(item)
+      false
+    else
+      vendors_that_sell(item).each do |vendor|
+        if amount > vendor.inventory[item]
+          reduce = (amount - vendor.inventory[item])
+          vendor.inventory[item] -= reduce
+        elsif amount < vendor.inventory[item]
+          vendor.inventory[item] -= amount
+          break
+        end
+
+        # require 'pry'; binding.pry
+      end
+      true
+    end
+
+    # total_inventory.each do |item|
+    #   require 'pry'; binding.pry
+    # end
+  end
+
 end
