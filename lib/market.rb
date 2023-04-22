@@ -23,6 +23,14 @@ class Market
     end
   end
 
+  def sorted_item_list
+    sorted_item_list = []
+    total_inventory.each do |item, _|
+      sorted_item_list << item.name
+    end
+    sorted_item_list.uniq.sort
+  end
+
   def total_inventory
     total_inventory = {}
 
@@ -39,7 +47,7 @@ class Market
         end
       end
     end
-    
+
     total_inventory
   end
 
