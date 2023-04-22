@@ -1,5 +1,10 @@
 class Market
-  def initialize
-    
+  attr_reader :name,
+              :vendors
+
+  def initialize(name)
+    @name     = name
+    @vendors  = []
+
   end
 end
